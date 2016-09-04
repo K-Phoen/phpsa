@@ -55,4 +55,18 @@ class ContextTest extends TestCase
         self::assertSame($variableAValue, $variableA->getValue());
         self::assertSame($variableAType, $variableA->getType());
     }
+
+
+    public function testVariableVariablesAreIgnored()
+    {
+        $context = $this->getContext();
+
+        $variableAName = new Variable('aName', 'a', CompiledExpression::STRING);
+        $context->addVariable(
+            $variableA = new Variable($variableAName, 1, CompiledExpression::INTEGER)
+        );
+
+        self::assertFalse($context->addVariable($variableA));
+        self::assertNull($context->getSymbol($variableAName));
+    }
 }

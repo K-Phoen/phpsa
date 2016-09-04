@@ -119,6 +119,10 @@ class Context
      */
     public function addVariable(Variable $variable)
     {
+        if (!is_string($variable->getName())) {
+            return false;
+        }
+
         $this->symbols[$variable->getName()] = $variable;
 
         return true;
@@ -150,6 +154,10 @@ class Context
      */
     public function getSymbol($name)
     {
+        if (!is_string($name)) {
+            return null;
+        }
+
         return isset($this->symbols[$name]) ? $this->symbols[$name] : null;
     }
 

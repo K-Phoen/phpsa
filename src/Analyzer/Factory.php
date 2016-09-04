@@ -22,6 +22,7 @@ class Factory
             [
                 // Another
                 new AnalyzerPass\Expression\ErrorSuppression(),
+                new AnalyzerPass\Expression\VariableVariableUsage(),
                 // Arrays
                 new AnalyzerPass\Expression\ArrayShortDefinition(),
                 new AnalyzerPass\Expression\ArrayDuplicateKeys(),
