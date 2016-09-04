@@ -21,8 +21,10 @@ class Factory
         $analyzer->registerExpressionPasses(
             [
                 // Another
-                new AnalyzerPass\Expression\ArrayShortDefinition(),
                 new AnalyzerPass\Expression\ErrorSuppression(),
+                // Arrays
+                new AnalyzerPass\Expression\ArrayShortDefinition(),
+                new AnalyzerPass\Expression\ArrayDuplicateKeys(),
                 // Function call
                 new AnalyzerPass\Expression\FunctionCall\AliasCheck(),
                 new AnalyzerPass\Expression\FunctionCall\DebugCode(),
