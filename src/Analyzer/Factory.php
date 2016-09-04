@@ -36,7 +36,8 @@ class Factory
         );
         $analyzer->registerStatementPasses(
             [
-                new AnalyzerPass\Statement\MethodCannotReturn()
+                new AnalyzerPass\Statement\MethodCannotReturn(),
+                new AnalyzerPass\Statement\UnexpectedUseOfThis(),
             ]
         );
         $analyzer->bind();
