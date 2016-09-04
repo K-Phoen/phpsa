@@ -44,12 +44,26 @@ class RuntimeClassDefinition extends ClassDefinition
     }
 
     /**
-     * @param $name
+     * @param string $name
+     * @param bool $inherit
      * @return bool
      */
-    public function hasConst($name)
+    public function hasConst($name, $inherit = false)
     {
-        return $this->reflection->hasConstant($name);
+        if (!$this->reflection->hasConstant($name)) {
+            return false;
+        }
+
+        if ($inherit) {
+            return true;
+        }
+
+        $parent = $this->reflection->getParentClass();
+        if (!$parent) {
+            return true;
+        }
+
+        return !$parent->hasConstant($name);
     }
 
     /**
@@ -93,7 +107,13 @@ class RuntimeClassDefinition extends ClassDefinition
      */
     public function getExtendsClassDefinition()
     {
-        throw new NotImplementedException(__FUNCTION__);
+        $parentReflection = $this->reflection->getParentClass();
+
+        if (!$parentReflection) {
+            return null;
+        }
+
+        return new static($parentReflection);
     }
 
     /**
@@ -101,6 +121,12 @@ class RuntimeClassDefinition extends ClassDefinition
      */
     public function getExtendsClass()
     {
-        throw new NotImplementedException(__FUNCTION__);
+        $parentReflection = $this->reflection->getParentClass();
+
+        if (!$parentReflection) {
+            return null;
+        }
+
+        return $parentReflection->getName();
     }
 }
