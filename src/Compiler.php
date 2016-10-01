@@ -7,8 +7,10 @@ namespace PHPSA;
 
 use PHPSA\Definition\ClassDefinition;
 use PHPSA\Definition\FunctionDefinition;
+use PHPSA\Definition\InterfaceDefinition;
 use PHPSA\Definition\RuntimeClassDefinition;
 use PHPSA\Definition\TraitDefinition;
+use PHPSA\Definition\RuntimeInterfaceDefinition;
 use ReflectionClass;
 
 class Compiler
@@ -16,7 +18,7 @@ class Compiler
     /**
      * @var ClassDefinition[]
      */
-    protected $classes = array();
+    protected $classes = [];
 
     /**
      * @var TraitDefinition[]
@@ -26,7 +28,12 @@ class Compiler
     /**
      * @var FunctionDefinition[]
      */
-    protected $functions = array();
+    protected $functions = [];
+
+    /**
+     * @var InterfaceDefinition[]
+     */
+    protected $interfaces = [];
 
     /**
      * @param ClassDefinition $class
@@ -53,11 +60,34 @@ class Compiler
     }
 
     /**
+     * @param InterfaceDefinition $interface
+     */
+    public function addInterface(InterfaceDefinition $interface)
+    {
+        $this->interfaces[implode('\\', [$interface->getNamespace(), $interface->getName()])] = $interface;
+    }
+
+    /**
      * @param Context $context
      */
     public function compile(Context $context)
     {
         $context->scopePointer = null;
+
+        foreach ($this->interfaces as $interface) {
+            foreach ($interface->getExtendsInterface() as $extendsInterface) {
+                if (isset($this->interfaces[$extendsInterface])) {
+                    $interface->addExtendsInterfaceDefinition($this->interfaces[$extendsInterface]);
+                    continue;
+                }
+
+                if (class_exists($extendsInterface, true)) {
+                    $interface->addExtendsInterfaceDefinition(
+                        new RuntimeInterfaceDefinition(new ReflectionClass($extendsInterface))
+                    );
+                }
+            }
+        }
 
         /**
          * @todo Implement class map...
@@ -79,6 +109,28 @@ class Compiler
                     }
                 }
             }
+
+            foreach ($class->getInterfaces() as $interface) {
+                if (!isset($this->interfaces[$interface])) {
+                    continue;
+                }
+
+                $class->addInterfaceDefinition($this->interfaces[$interface]);
+            }
+        }
+
+        foreach ($this->interfaces as $interface) {
+            /**
+             * @todo Configuration
+             *
+             * Ignore Interfaces compiling from vendor
+             */
+            $checkVendor = strpos($class->getFilepath(), './vendor');
+            if ($checkVendor !== false && $checkVendor < 3) {
+                continue;
+            }
+
+            $interface->compile($context);
         }
 
         foreach ($this->functions as $function) {

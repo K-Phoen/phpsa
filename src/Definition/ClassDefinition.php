@@ -73,9 +73,14 @@ class ClassDefinition extends ParentDefinition
     protected $extendsClassDefinition;
 
     /**
-     * @var array
+     * @var string[]
      */
-    protected $interfaces = array();
+    protected $interfaces = [];
+
+    /**
+     * @var InterfaceDefinition[]
+     */
+    protected $interfacesDefinitions = [];
 
     /**
      * @param string $name
@@ -105,7 +110,7 @@ class ClassDefinition extends ParentDefinition
         foreach ($property->props as $propertyDefinition) {
             $this->properties[$propertyDefinition->name] = $propertyDefinition;
         }
-        
+
         $this->propertyStatements[] = $property;
     }
 
@@ -235,8 +240,17 @@ class ClassDefinition extends ParentDefinition
      */
     public function hasConst($name, $inherit = false)
     {
-        if ($inherit && $this->extendsClassDefinition && $this->extendsClassDefinition->hasConst($name, $inherit)) {
-            return true;
+        if ($inherit) {
+            if ($this->extendsClassDefinition && $this->extendsClassDefinition->hasConst($name, $inherit)) {
+                return true;
+            }
+
+            /** @var InterfaceDefinition $interface */
+            foreach ($this->interfacesDefinitions as $interface) {
+                if ($interface->hasConst($name, true)) {
+                    return true;
+                }
+            }
         }
 
         return isset($this->constants[$name]);
@@ -348,6 +362,22 @@ class ClassDefinition extends ParentDefinition
     public function addInterface($interface)
     {
         $this->interfaces[] = $interface;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getInterfaces()
+    {
+        return $this->interfaces;
+    }
+
+    /**
+     * @param InterfaceDefinition $interfaceDefinition
+     */
+    public function addInterfaceDefinition(InterfaceDefinition $interfaceDefinition)
+    {
+        $this->interfacesDefinitions[] = $interfaceDefinition;
     }
 
     /**

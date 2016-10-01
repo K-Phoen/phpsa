@@ -135,10 +135,8 @@ class FileParser
                     $definition->setExtendsClass($statement->extends->toString());
                 }
 
-                if ($statement->implements) {
-                    foreach ($statement->implements as $interface) {
-                        $definition->addInterface($interface->toString());
-                    }
+                foreach ($statement->implements as $interface) {
+                    $definition->addInterface($interface->toString());
                 }
 
                 foreach ($statement->stmts as $stmt) {
@@ -167,6 +165,26 @@ class FileParser
                 $definition->setNamespace($aliasManager->getNamespace());
 
                 $this->compiler->addFunction($definition);
+            } elseif ($statement instanceof Node\Stmt\Interface_) {
+                $definition = new InterfaceDefinition($statement->name, $statement);
+                $definition->setFilepath($filepath);
+                $definition->setNamespace($aliasManager->getNamespace());
+
+                foreach ($statement->extends as $interface) {
+                    $definition->addExtendsInterface($interface->toString());
+                }
+
+                foreach ($statement->stmts as $stmt) {
+                    if ($stmt instanceof Node\Stmt\ClassMethod) {
+                        $method = new ClassMethod($stmt->name, $stmt, $stmt->type | Node\Stmt\Class_::MODIFIER_ABSTRACT);
+
+                        $definition->addMethod($method);
+                    } elseif ($stmt instanceof Node\Stmt\ClassConst) {
+                        $definition->addConst($stmt);
+                    }
+                }
+
+                $this->compiler->addInterface($definition);
             }
         }
     }
