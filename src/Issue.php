@@ -105,6 +105,8 @@ class Issue
      */
     protected $location;
 
+    protected $blame;
+
     /**
      * @param string $checkName
      * @param string $description
@@ -130,6 +132,7 @@ class Issue
             'description' => $this->description,
             'location' => $this->location->toArray(),
             'categories' => $this->categories,
+            'blame' => $this->blame,
         ];
     }
 
@@ -163,5 +166,21 @@ class Issue
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBlame()
+    {
+        return $this->blame;
+    }
+
+    /**
+     * @param string $blame
+     */
+    public function setBlame($blame)
+    {
+        $this->blame = $blame;
     }
 }

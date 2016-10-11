@@ -24,6 +24,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Output\StreamOutput;
 use Webiny\Component\EventManager\EventManager;
 use PHPSA\Analyzer\Pass as AnalyzerPass;
 
@@ -76,16 +77,6 @@ class CheckCommand extends Command
             $output->writeln('<error>It is highly recommended to disable the XDebug extension before invoking this command.</error>');
         }
 
-        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7, new \PhpParser\Lexer\Emulative([
-            'usedAttributes' => [
-                'comments',
-                'startLine',
-                'endLine',
-                'startTokenPos',
-                'endTokenPos'
-            ]
-        ]));
-
         /** @var Application $application */
         $application = $this->getApplication();
         $application->compiler = new Compiler();
@@ -106,8 +97,8 @@ class CheckCommand extends Command
         }
 
         $fileParser = new FileParser(
-            $parser,
-            $this->getCompiler()
+            $this->getParser(),
+            $application->compiler
         );
 
         $path = $input->getArgument('path');
@@ -149,21 +140,16 @@ class CheckCommand extends Command
             $fileParser->parserFile($path, $context);
         }
 
-
         /**
          * Step 2 Recursive check ...
          */
         $application->compiler->compile($context);
 
-        $jsonReport = $input->getOption('report-json');
-        if ($jsonReport) {
-            $reporter = ReporterFactory::create()->getReporter('json');
-
-            file_put_contents(
-                $jsonReport,
-                $reporter->report($this->getApplication()->getIssuesCollector())
-            );
-        }
+        /**
+         * Step 3 Report!
+         */
+        $reporter = $this->getIssuesReporter($input, $output);
+        $reporter->report($application->getIssuesCollector());
 
         $output->writeln('');
         $output->writeln('Memory usage: ' . $this->getMemoryUsage(false) . ' (peak: ' . $this->getMemoryUsage(true) . ') MB');
@@ -176,14 +162,6 @@ class CheckCommand extends Command
     protected function getMemoryUsage($type)
     {
         return round(memory_get_usage($type) / 1024 / 1024, 2);
-    }
-
-    /**
-     * @return Compiler
-     */
-    protected function getCompiler()
-    {
-        return $this->getApplication()->compiler;
     }
 
     /**
@@ -203,5 +181,39 @@ class CheckCommand extends Command
             $loader->load($configFile),
             Analyzer\Factory::getPassesConfigurations()
         );
+    }
+
+    /**
+     * @return \PhpParser\Parser
+     */
+    protected function getParser()
+    {
+        return (new ParserFactory())->create(ParserFactory::PREFER_PHP7, new \PhpParser\Lexer\Emulative([
+            'usedAttributes' => [
+                'comments',
+                'startLine',
+                'endLine',
+                'startTokenPos',
+                'endTokenPos'
+            ]
+        ]));
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return \PHPSA\Report\Reporter
+     */
+    protected function getIssuesReporter(InputInterface $input, OutputInterface $output)
+    {
+        $jsonReport = $input->getOption('report-json');
+        $reporterOutput = $output;
+        $reportFormat = 'text';
+
+        if ($jsonReport) {
+            $reporterOutput = new StreamOutput($jsonReport);
+        }
+
+        return ReporterFactory::create()->getReporter($reportFormat, $reporterOutput);
     }
 }

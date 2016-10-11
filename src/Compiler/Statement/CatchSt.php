@@ -19,7 +19,7 @@ class CatchSt extends AbstractCompiler
      */
     public function compile($statement, Context $context)
     {
-        $context->addVariable(new Variable($statement->var, null, CompiledExpression::OBJECT));
+        $context->addVariable(new Variable($statement->var, null, CompiledExpression::OBJECT, $statement));
 
         foreach ($statement->stmts as $stmt) {
             \PHPSA\nodeVisitorFactory($stmt, $context);

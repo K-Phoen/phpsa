@@ -2,43 +2,49 @@
 
 namespace PHPSA\Report;
 
+use Symfony\Component\Console\Output\OutputInterface;
+use PHPSA\Report\Formatter;
+
 class ReporterFactory
 {
-    protected $reporters = [];
+    protected $formatters = [];
 
     public static function create()
     {
         return new self([
-            'json' => new JsonReporter(),
+            'json' => new Formatter\JsonFormatter(),
+            'text' => new Formatter\TextFormatter(),
         ]);
     }
 
-    public function __construct(array $reporters = [])
+    public function __construct(array $formatters = [])
     {
-        foreach ($reporters as $format => $reporter) {
-            $this->registerReporter($format, $reporter);
+        foreach ($formatters as $format => $formatter) {
+            $this->registerFormatter($format, $formatter);
         }
     }
 
     /**
      * @param string $format
-     * @param Reporter $reporter
+     * @param Formatter\ReportFormatter $formatter
      */
-    public function registerReporter($format, Reporter $reporter)
+    public function registerFormatter($format, Formatter\ReportFormatter $formatter)
     {
-        $this->reporters[$format] = $reporter;
+        $this->formatters[$format] = $formatter;
     }
 
     /**
      * @param string $format
+     * @param OutputInterface $output
+     *
      * @return Reporter
      *
      * @throws \LogicException If no reporter is registered for the given format.
      */
-    public function getReporter($format)
+    public function getReporter($format, OutputInterface $output)
     {
-        if (array_key_exists($format, $this->reporters)) {
-            return $this->reporters[$format];
+        if (array_key_exists($format, $this->formatters)) {
+            return new Reporter($this->formatters[$format], $output);
         }
 
         throw new \LogicException(sprintf('No reporter registered for format "%s".', $format));

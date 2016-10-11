@@ -166,23 +166,6 @@ class Context
     }
 
     /**
-     * Creates a warning message.
-     *
-     * @param string $type
-     * @param string $message
-     * @return bool
-     */
-    public function warning($type, $message)
-    {
-        $this->output
-            ->writeln('<comment>Warning:  ' . $message . ' in ' . $this->filepath . '  [' . $type . ']</comment>');
-
-        $this->output->writeln('');
-
-        return true;
-    }
-
-    /**
      * Creates a notice message.
      *
      * @param string $type
@@ -193,39 +176,7 @@ class Context
      */
     public function notice($type, $message, \PhpParser\NodeAbstract $expr, $status = Check::CHECK_SAFE)
     {
-        $filepath = $this->filepath;
-        $code = file($filepath);
-
-        $this->output->writeln('<comment>Notice:  ' . $message . " in {$filepath} on {$expr->getLine()} [{$type}]</comment>");
-        $this->output->writeln('');
-
-        if ($this->application->getConfiguration()->valueIsTrue('blame')) {
-            exec("git blame --show-email -L {$expr->getLine()},{$expr->getLine()} " . $filepath, $result);
-            if ($result && isset($result[0])) {
-                $result[0] = trim($result[0]);
-
-                $this->output->writeln("<comment>\t {$result[0]}</comment>");
-            }
-        } else {
-            $code = trim($code[$expr->getLine() - 1]);
-            $this->output->writeln("<comment>\t {$code} </comment>");
-        }
-
-        $this->output->writeln('');
-
-        $issueCollector = $this->application->getIssuesCollector();
-        $issueCollector->addIssue(
-            new Issue(
-                $type,
-                $message,
-                new IssueLocation(
-                    $this->filepath,
-                    $expr->getLine() - 1
-                )
-            )
-        );
-
-        return true;
+        return $this->addIssue($type, $message, $expr->getLine());
     }
 
     /**
@@ -237,25 +188,30 @@ class Context
      */
     public function syntaxError(\PhpParser\Error $exception, $filepath)
     {
-        $code = file($filepath);
+        return $this->addIssue('syntax-error', $exception->getMessage(), $exception->getStartLine(), $filepath);
+    }
 
-        $this->output->writeln('<error>Syntax error:  ' . $exception->getMessage() . " in {$filepath} </error>");
-        $this->output->writeln('');
+    /**
+     * @param $type
+     * @param $message
+     * @param $line
+     * @param string|null $filepath
+     * @return bool
+     */
+    protected function addIssue($type, $message, $line, $filepath = null)
+    {
+        $filepath = $filepath ?: $this->filepath;
+        $issue = new Issue($type, $message, new IssueLocation($filepath, $line));
+
+        if ($this->application->getConfiguration()->getValue('blame')) {
+            exec("git blame --show-email -L {$line},{$line} " . $filepath, $result);
+            if ($result && isset($result[0])) {
+                $issue->setBlame(trim($result[0]));
+            }
+        }
 
         $issueCollector = $this->application->getIssuesCollector();
-        $issueCollector->addIssue(
-            new Issue(
-                'syntax-error',
-                'syntax-error',
-                new IssueLocation(
-                    $filepath,
-                    $exception->getStartLine() - 2
-                )
-            )
-        );
-
-        $code = trim($code[$exception->getStartLine()-2]);
-        $this->output->writeln("<comment>\t {$code} </comment>");
+        $issueCollector->addIssue($issue);
 
         return true;
     }

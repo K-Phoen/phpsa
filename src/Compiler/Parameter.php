@@ -5,6 +5,7 @@
 
 namespace PHPSA\Compiler;
 
+use PhpParser\NodeAbstract;
 use PHPSA\CompiledExpression;
 use PHPSA\Variable;
 
@@ -15,10 +16,11 @@ class Parameter extends Variable
      * @param null $defaultValue
      * @param int $type
      * @param bool|false $referenced
+     * @param NodeAbstract $declarationStmt
      */
-    public function __construct($name, $defaultValue = null, $type = CompiledExpression::UNKNOWN, $referenced = false)
+    public function __construct($name, $defaultValue = null, $type = CompiledExpression::UNKNOWN, $referenced = false, NodeAbstract $declarationStmt)
     {
-        parent::__construct($name, $defaultValue, $type);
+        parent::__construct($name, $defaultValue, $type, $declarationStmt);
 
         $this->referenced = $referenced;
     }

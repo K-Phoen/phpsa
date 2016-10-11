@@ -35,6 +35,7 @@ class AssignRef extends AbstractExpressionCompiler
                     $name,
                     $compiledExpression->getValue(),
                     $compiledExpression->getType(),
+                    $expr->expr,
                     $context->getCurrentBranch()
                 );
                 $context->addVariable($symbol);

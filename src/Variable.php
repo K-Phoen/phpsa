@@ -5,6 +5,7 @@
 
 namespace PHPSA;
 
+use PhpParser\NodeAbstract;
 use PHPSA\Compiler\Types;
 
 class Variable
@@ -59,17 +60,22 @@ class Variable
      */
     protected $type;
 
+    /** @var NodeAbstract The AST node where the variable is declared */
+    protected $declarationStmt;
+
     /**
      * Creates a variable.
      *
      * @param string $name
      * @param mixed $defaultValue
      * @param int $type
+     * @param NodeAbstract $declarationStmt
      * @param int|string $branch
      */
-    public function __construct($name, $defaultValue = null, $type = CompiledExpression::UNKNOWN, $branch = self::BRANCH_ROOT)
+    public function __construct($name, $defaultValue = null, $type = CompiledExpression::UNKNOWN, NodeAbstract $declarationStmt = null, $branch = self::BRANCH_ROOT)
     {
         $this->name = $name;
+        $this->declarationStmt = $declarationStmt;
 
         if (!is_null($defaultValue)) {
             $this->sets++;
@@ -78,6 +84,14 @@ class Variable
 
         $this->type = (int) $type;
         $this->branch = $branch;
+    }
+
+    /**
+     * @return NodeAbstract|null
+     */
+    public function getDeclarationStatement()
+    {
+        return $this->declarationStmt;
     }
 
     /**

@@ -137,7 +137,7 @@ class ClassDefinition extends ParentDefinition
     public function compile(Context $context)
     {
         if ($this->compiled) {
-            return true;
+            return $this;
         }
 
         $context->getEventManager()->fire(
@@ -202,20 +202,20 @@ class ClassDefinition extends ParentDefinition
 
             $method->compile($context);
 
-            $symbols = $context->getSymbols();
-            if (count($symbols) > 0) {
-                foreach ($symbols as $name => $variable) {
-                    if ($variable->isUnused()) {
-                        $context->warning(
-                            'unused-' . $variable->getSymbolType(),
-                            sprintf(
-                                'Unused ' . $variable->getSymbolType() . ' $%s in method %s()',
-                                $variable->getName(),
-                                $method->getName()
-                            )
-                        );
-                    }
+            foreach ($context->getSymbols() as $name => $variable) {
+                if (!$variable->isUnused()) {
+                    continue;
                 }
+
+                $context->notice(
+                    'unused-' . $variable->getSymbolType(),
+                    sprintf(
+                        'Unused ' . $variable->getSymbolType() . ' $%s in method %s()',
+                        $variable->getName(),
+                        $method->getName()
+                    ),
+                    $variable->getDeclarationStatement()
+                );
             }
         }
 

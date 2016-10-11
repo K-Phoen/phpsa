@@ -167,17 +167,6 @@ class CompiledExpression
     }
 
     /**
-     * Creates a variable from the expression.
-     *
-     * @param string $name Name of the Variable
-     * @return Variable
-     */
-    public function toVariable($name)
-    {
-        return new Variable($name, $this->value, $this->type);
-    }
-
-    /**
      * If we don't know $type but know $value
      *
      * @param $value

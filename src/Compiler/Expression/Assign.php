@@ -2,11 +2,11 @@
 
 namespace PHPSA\Compiler\Expression;
 
+use PhpParser\NodeAbstract;
 use PHPSA\CompiledExpression;
 use PHPSA\Context;
-use PHPSA\Compiler\Expression;
-use PHPSA\Compiler\Expression\AbstractExpressionCompiler;
 use PhpParser\Node;
+use PHPSA\Definition\ClassDefinition;
 
 class Assign extends AbstractExpressionCompiler
 {
@@ -34,16 +34,17 @@ class Assign extends AbstractExpressionCompiler
                 }
 
                 if ($var->name instanceof Node\Expr\Variable) {
-                    $this->compileVariableDeclaration($compiler->compile($var->name), new CompiledExpression(), $context);
+                    $this->compileVariableDeclaration($var, $var->name, new CompiledExpression(), $context);
                     continue;
                 }
 
                 $symbol = $context->getSymbol($var->name);
                 if (!$symbol) {
-                    $symbol = new \PHPSA\Variable(
+                    $symbol = new \PhpSA\Variable(
                         $var->name,
                         null,
                         CompiledExpression::UNKNOWN,
+                        $expr,
                         $context->getCurrentBranch()
                     );
                     $context->addVariable($symbol);
@@ -60,7 +61,7 @@ class Assign extends AbstractExpressionCompiler
         }
 
         if ($expr->var instanceof Node\Expr\Variable) {
-            $this->compileVariableDeclaration($compiler->compile($expr->var->name), $compiledExpression, $context);
+            $this->compileVariableDeclaration($expr->var, $expr->var->name, $compiledExpression, $context);
 
             return $compiledExpression;
         }
@@ -84,14 +85,13 @@ class Assign extends AbstractExpressionCompiler
     }
 
 
-    protected function compileVariableDeclaration(CompiledExpression $variableName, CompiledExpression $value, Context $context)
+    protected function compileVariableDeclaration(NodeAbstract $varExpression, $varNameExpression, CompiledExpression $value, Context $context)
     {
-        switch ($variableName->getType()) {
-            case CompiledExpression::STRING:
-                break;
-            default:
-                $context->debug('Unexpected type of Variable name after compile');
-                return new CompiledExpression();
+        $variableName = $context->getExpressionCompiler()->compile($varNameExpression);
+
+        if (!$variableName->isString()) {
+            $context->debug('Unexpected type of Variable name after compile');
+            return new CompiledExpression();
         }
 
         $symbol = $context->getSymbol($variableName->getValue());
@@ -103,10 +103,11 @@ class Assign extends AbstractExpressionCompiler
                 $value->getValue()
             );
         } else {
-            $symbol = new \PHPSA\Variable(
+            $symbol = new \PhpSA\Variable(
                 $variableName->getValue(),
                 $value->getValue(),
                 $value->getType(),
+                $varExpression,
                 $context->getCurrentBranch()
             );
             $context->addVariable($symbol);
