@@ -23,16 +23,17 @@ class AliasCheck
 
 ?>
 ----------------------------
-[{
-"type": "fcall.alias",
-"message": "join() is an alias of another function. Use implode() instead.",
-"file": "AliasCheck.php",
-"line": 11
-},
-{
-"type": "fcall.alias",
-"message": "sizeof() is an alias of another function. Use count() instead.",
-"file": "AliasCheck.php",
-"line": 19
-}
+[
+    {
+        "type": "fcall.alias",
+        "message": "join() is an alias of another function. Use implode() instead.",
+        "file": "AliasCheck.php",
+        "line": 12
+    },
+    {
+        "type": "fcall.alias",
+        "message": "sizeof() is an alias of another function. Use count() instead.",
+        "file": "AliasCheck.php",
+        "line": 20
+    }
 ]

@@ -85,25 +85,19 @@ function implementedBodyFunction() {
         "type":"missing_body",
         "message":"Missing Body",
         "file":"MissingBody.php",
-        "line":6
+        "line":7
     },
     {
         "type":"missing_body",
         "message":"Missing Body",
         "file":"MissingBody.php",
-        "line":10
+        "line":11
     },
     {
         "type":"missing_body",
         "message":"Missing Body",
         "file":"MissingBody.php",
-        "line":13
-    },
-    {
-        "type":"missing_body",
-        "message":"Missing Body",
-        "file":"MissingBody.php",
-        "line":16
+        "line":14
     },
     {
         "type":"missing_body",
@@ -121,7 +115,7 @@ function implementedBodyFunction() {
         "type":"missing_body",
         "message":"Missing Body",
         "file":"MissingBody.php",
-        "line":21
+        "line":19
     },
     {
         "type":"missing_body",
@@ -133,18 +127,24 @@ function implementedBodyFunction() {
         "type":"missing_body",
         "message":"Missing Body",
         "file":"MissingBody.php",
-        "line":25
+        "line":23
     },
     {
         "type":"missing_body",
         "message":"Missing Body",
         "file":"MissingBody.php",
-        "line":29
+        "line":26
     },
     {
         "type":"missing_body",
         "message":"Missing Body",
         "file":"MissingBody.php",
-        "line":34
+        "line":30
+    },
+    {
+        "type":"missing_body",
+        "message":"Missing Body",
+        "file":"MissingBody.php",
+        "line":35
     }
 ]

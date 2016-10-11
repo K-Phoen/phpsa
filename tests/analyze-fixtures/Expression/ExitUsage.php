@@ -38,12 +38,12 @@ class ExitUsage
         "type":"exit_usage",
         "message":"exit/die statements make the code hard to test and should not be used",
         "file":"ExitUsage.php",
-        "line":11
+        "line":12
     },
     {
         "type":"exit_usage",
         "message":"exit/die statements make the code hard to test and should not be used",
         "file":"ExitUsage.php",
-        "line":19
+        "line":20
     }
 ]

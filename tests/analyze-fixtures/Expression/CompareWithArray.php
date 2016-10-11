@@ -31,6 +31,6 @@ class CompareWithArray
         "type":"compare_with_array",
         "message":"You are comparing an array. Did you want to use count()?",
         "file":"CompareWithArray.php",
-        "line":11
+        "line":12
     }
 ]

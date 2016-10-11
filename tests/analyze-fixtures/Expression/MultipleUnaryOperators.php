@@ -70,24 +70,24 @@ class MultipleUnaryOperators
         "type":"multiple_unary_operators",
         "message":"You are using multiple unary operators. This has no effect",
         "file":"MultipleUnaryOperators.php",
-        "line":8
+        "line":9
     },
     {
         "type":"multiple_unary_operators",
         "message":"You are using multiple unary operators. This has no effect",
         "file":"MultipleUnaryOperators.php",
-        "line":15
+        "line":16
     },
     {
         "type":"multiple_unary_operators",
         "message":"You are using multiple unary operators. This has no effect",
         "file":"MultipleUnaryOperators.php",
-        "line":22
+        "line":23
     },
     {
         "type":"multiple_unary_operators",
         "message":"You are using multiple unary operators. This has no effect",
         "file":"MultipleUnaryOperators.php",
-        "line":29
+        "line":30
     }
 ]

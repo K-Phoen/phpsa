@@ -27,6 +27,6 @@ class ErrorSuppression
         "type":"error.suppression",
         "message":"Please don't suppress errors with the @ operator.",
         "file":"ErrorSuppression.php",
-        "line":11
+        "line":12
     }
 ]

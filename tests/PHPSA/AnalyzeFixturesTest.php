@@ -104,7 +104,7 @@ class AnalyzeFixturesTest extends TestCase
             },
             $application->getIssuesCollector()->getIssues()
         );
-        
+
         foreach ($expectedArray as $check) {
             self::assertContains($check, $issues, $file); // every expected Issue is in the collector
         }

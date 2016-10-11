@@ -84,54 +84,54 @@ class YodaCondition
         "type": "yoda_condition",
         "message": "Avoid Yoda conditions, where constants are placed first in comparisons",
         "file": "YodaCondition.php",
-        "line": 9
+        "line": 10
     },
     {
         "type": "yoda_condition",
         "message": "Avoid Yoda conditions, where constants are placed first in comparisons",
         "file": "YodaCondition.php",
-        "line": 11
+        "line": 12
     },
     {
         "type": "yoda_condition",
         "message": "Avoid Yoda conditions, where constants are placed first in comparisons",
         "file": "YodaCondition.php",
-        "line": 13
+        "line": 14
     },
     {
         "type": "yoda_condition",
         "message": "Avoid Yoda conditions, where constants are placed first in comparisons",
         "file": "YodaCondition.php",
-        "line": 15
+        "line": 16
     },
     {
         "type": "yoda_condition",
         "message": "Avoid Yoda conditions, where constants are placed first in comparisons",
         "file": "YodaCondition.php",
-        "line": 23
+        "line": 24
     },
     {
         "type": "yoda_condition",
         "message": "Avoid Yoda conditions, where constants are placed first in comparisons",
         "file": "YodaCondition.php",
-        "line": 27
+        "line": 28
     },
     {
         "type": "yoda_condition",
         "message": "Avoid Yoda conditions, where constants are placed first in comparisons",
         "file": "YodaCondition.php",
-        "line": 31
+        "line": 32
     },
     {
         "type": "yoda_condition",
         "message": "Avoid Yoda conditions, where constants are placed first in comparisons",
         "file": "YodaCondition.php",
-        "line": 40
+        "line": 41
     },
     {
         "type": "yoda_condition",
         "message": "Avoid Yoda conditions, where constants are placed first in comparisons",
         "file": "YodaCondition.php",
-        "line": 42
+        "line": 43
     }
 ]

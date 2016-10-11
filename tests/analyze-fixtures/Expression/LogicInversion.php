@@ -117,48 +117,48 @@ class LogicValid
         "type":"logic_inversion",
         "message":"Use \"a != b\" expression instead of \"!(a == b)\".",
         "file":"LogicInversion.php",
-        "line":11
+        "line":12
     },
     {
         "type":"logic_inversion",
         "message":"Use \"a == b\" expression instead of \"!(a != b)\".",
         "file":"LogicInversion.php",
-        "line":16
+        "line":17
     },
     {
         "type":"logic_inversion",
         "message":"Use \"a === b\" expression instead of \"!(a !== b)\".",
         "file":"LogicInversion.php",
-        "line":21
+        "line":22
     },
     {
         "type":"logic_inversion",
         "message":"Use \"a !== b\" expression instead of \"!(a === b)\".",
         "file":"LogicInversion.php",
-        "line":26
+        "line":27
     },
     {
         "type":"logic_inversion",
         "message":"Use \"a > b\" expression instead of \"!(a <= b)\".",
         "file":"LogicInversion.php",
-        "line":31
+        "line":32
     },
     {
         "type":"logic_inversion",
         "message":"Use \"a >= b\" expression instead of \"!(a < b)\".",
         "file":"LogicInversion.php",
-        "line":36
+        "line":37
     },
     {
         "type":"logic_inversion",
         "message":"Use \"a < b\" expression instead of \"!(a >= b)\".",
         "file":"LogicInversion.php",
-        "line":41
+        "line":42
     },
     {
         "type":"logic_inversion",
         "message":"Use \"a <= b\" expression instead of \"!(a > b)\".",
         "file":"LogicInversion.php",
-        "line":46
+        "line":47
     }
 ]

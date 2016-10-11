@@ -27,6 +27,6 @@ class StaticUsage
         "type": "static_usage",
         "message": "Do not use static variable scoping",
         "file": "StaticUsage.php",
-        "line": 12
+        "line": 13
     }
 ]

@@ -37,12 +37,12 @@ function testFuncGetArgsNotEmpty($a)
         "type":"fcall.argumentunpacking",
         "message":"Please use argument unpacking (...) instead of func_get_args().",
         "file":"ArgumentUnpacking.php",
-        "line":11
+        "line":12
     },
     {
         "type":"fcall.argumentunpacking",
         "message":"Please use argument unpacking (...) instead of func_get_args().",
         "file":"ArgumentUnpacking.php",
-        "line":25
+        "line":26
     }
 ]

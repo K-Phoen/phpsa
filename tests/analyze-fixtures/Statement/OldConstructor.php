@@ -25,6 +25,6 @@ class NewConstructorUsed
         "type":"deprecated.constructor",
         "message":"Class OldConstructorUsed uses a PHP4 constructor.",
         "file":"OldConstructor.php",
-        "line":4
+        "line":5
     }
 ]

@@ -27,6 +27,6 @@ class GlobalUsage
         "type": "global_usage",
         "message": "Do not use globals",
         "file": "GlobalUsage.php",
-        "line": 12
+        "line": 13
     }
 ]

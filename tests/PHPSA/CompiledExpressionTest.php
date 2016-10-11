@@ -6,17 +6,6 @@ use PHPSA\CompiledExpression;
 
 class CompiledExpressionTest extends TestCase
 {
-    public function testToVariableMethod()
-    {
-        $compiledExpression = new CompiledExpression(CompiledExpression::INTEGER, 1);
-        $this->assertInstanceOfCompiledExpression($compiledExpression);
-
-        $resultVariable = $compiledExpression->toVariable('test');
-        parent::assertInstanceOf('PHPSA\Variable', $resultVariable);
-        parent::assertSame($compiledExpression->getType(), $resultVariable->getType());
-        parent::assertSame($compiledExpression->getValue(), $resultVariable->getValue());
-    }
-
     public function testFromZvalInteger()
     {
         $result = CompiledExpression::fromZvalValue(1);

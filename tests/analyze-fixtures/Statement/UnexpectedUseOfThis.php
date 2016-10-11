@@ -148,42 +148,42 @@ function OtherAsArgument($a)
         "type":"unexpected_use.this",
         "message":"Method/Function thisAsArgument can not have a parameter named \"this\".",
         "file":"UnexpectedUseOfThis.php",
-        "line":9
+        "line":10
     },
     {
         "type":"unexpected_use.this",
         "message":"Catch block can not have a catch variable named \"this\".",
         "file":"UnexpectedUseOfThis.php",
-        "line":21
+        "line":22
     },
     {
         "type":"unexpected_use.this",
         "message":"Foreach loop can not use a value variable named \"this\".",
         "file":"UnexpectedUseOfThis.php",
-        "line":31
+        "line":32
     },
     {
         "type":"unexpected_use.this",
         "message":"Can not declare a static variable named \"this\".",
         "file":"UnexpectedUseOfThis.php",
-        "line":41
+        "line":42
     },
     {
         "type":"unexpected_use.this",
         "message":"Can not declare a global variable named \"this\".",
         "file":"UnexpectedUseOfThis.php",
-        "line":51
+        "line":52
     },
     {
         "type":"unexpected_use.this",
         "message":"Can not unset $this.",
         "file":"UnexpectedUseOfThis.php",
-        "line":61
+        "line":62
     },
     {
         "type":"unexpected_use.this",
         "message":"Method/Function thisAsArgument can not have a parameter named \"this\".",
         "file":"UnexpectedUseOfThis.php",
-        "line":131
+        "line":132
     }
 ]

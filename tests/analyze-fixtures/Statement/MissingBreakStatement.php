@@ -111,12 +111,12 @@ class MissingBreakStatement
         "type":"missing_break_statement",
         "message":"Missing \"break\" statement",
         "file":"MissingBreakStatement.php",
-        "line":19
+        "line":20
     },
     {
         "type":"missing_break_statement",
         "message":"Missing \"break\" statement",
         "file":"MissingBreakStatement.php",
-        "line":97
+        "line":98
     }
 ]

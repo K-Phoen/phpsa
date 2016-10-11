@@ -21,6 +21,6 @@ class EvalUsage
         "type":"eval_usage",
         "message":"Using eval is discouraged.",
         "file":"EvalUsage.php",
-        "line":11
+        "line":12
     }
 ]

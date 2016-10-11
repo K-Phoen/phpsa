@@ -37,12 +37,12 @@ class TestNoReturn
         "type":"return.construct",
         "message":"Method __construct cannot return a value.",
         "file":"MethodCannotReturn.php",
-        "line":8
+        "line":9
     },
     {
         "type":"return.construct",
         "message":"Method __destruct cannot return a value.",
         "file":"MethodCannotReturn.php",
-        "line":13
+        "line":14
     }
 ]

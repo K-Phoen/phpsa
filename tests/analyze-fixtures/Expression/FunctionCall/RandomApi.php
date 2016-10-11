@@ -37,18 +37,18 @@ class RandomApi
         "type":"rand.api.migration",
         "message":"Function rand() is not recommended, please use random_int/random_bytes (PHP 7) or mt_rand (not cryptographically secure) instead.",
         "file":"RandomApi.php",
-        "line":11
+        "line":12
     },
     {
         "type":"rand.api.migration",
         "message":"Function srand() is not recommended, please use random_int/random_bytes (PHP 7) or mt_srand (not cryptographically secure) instead.",
         "file":"RandomApi.php",
-        "line":19
+        "line":20
     },
     {
         "type":"rand.api.migration",
         "message":"Function getrandmax() is not recommended, please use random_int/random_bytes (PHP 7) or mt_getrandmax (not cryptographically secure) instead.",
         "file":"RandomApi.php",
-        "line":28
+        "line":29
     }
 ]

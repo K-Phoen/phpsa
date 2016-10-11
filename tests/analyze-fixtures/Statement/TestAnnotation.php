@@ -45,6 +45,6 @@ class TestAnnotation
         "type":"test.annotation",
         "message":"Annotation @test is not needed when the method is prefixed with test.",
         "file":"TestAnnotation.php",
-        "line":22
+        "line":23
     }
 ]

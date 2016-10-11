@@ -72,36 +72,36 @@ trait withDocblockTrait
         "type":"missing_docblock",
         "message":"Missing Docblock",
         "file":"MissingDocblock.php",
-        "line":4
+        "line":5
     },
     {
         "type":"missing_docblock",
         "message":"Missing Docblock",
         "file":"MissingDocblock.php",
-        "line":6
+        "line":7
     },
     {
         "type":"missing_docblock",
         "message":"Missing Docblock",
         "file":"MissingDocblock.php",
-        "line":8
+        "line":9
     },
     {
         "type":"missing_docblock",
         "message":"Missing Docblock",
         "file":"MissingDocblock.php",
-        "line":10
+        "line":11
     },
     {
         "type":"missing_docblock",
         "message":"Missing Docblock",
         "file":"MissingDocblock.php",
-        "line":16
+        "line":17
     },
     {
         "type":"missing_docblock",
         "message":"Missing Docblock",
         "file":"MissingDocblock.php",
-        "line":20
+        "line":21
     }
 ]

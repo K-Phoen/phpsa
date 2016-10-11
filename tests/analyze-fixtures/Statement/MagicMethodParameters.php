@@ -44,18 +44,18 @@ class WrongMagicMethods
         "type":"magic_method_parameters",
         "message":"Magic method __get must take 1 parameter at least",
         "file":"MagicMethodParameters.php",
-        "line":24
+        "line":25
     },
     {
         "type":"magic_method_parameters",
         "message":"Magic method __set must take 2 parameters at least",
         "file":"MagicMethodParameters.php",
-        "line":29
+        "line":30
     },
     {
         "type":"magic_method_parameters",
         "message":"Magic method __clone cannot accept arguments",
         "file":"MagicMethodParameters.php",
-        "line":34
+        "line":35
     }
 ]

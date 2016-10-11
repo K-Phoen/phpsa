@@ -12,7 +12,7 @@ class OptionalParamBeforeRequiredClass
 {
     public function OptionalParamBeforeRequiredMethod($a = 1, $b)
     {}
-};
+}
 
 function OptionalParamAfterRequiredFunction($a, $b = 1)
 {}
@@ -30,12 +30,12 @@ class OptionalParamAfterRequiredClass
         "type":"optional-param-before-required",
         "message":"Optional parameter before required one is always required.",
         "file":"OptionalParamBeforeRequired.php",
-        "line":7
+        "line":8
     },
     {
         "type":"optional-param-before-required",
         "message":"Optional parameter before required one is always required.",
         "file":"OptionalParamBeforeRequired.php",
-        "line":12
+        "line":13
     }
 ]

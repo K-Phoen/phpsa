@@ -106,42 +106,42 @@ class ArrayIllegalOffsetType
         "type":"array.illegal_offset_type",
         "message":"Illegal array offset type stdClass.",
         "file":"ArrayIllegalOffsetType.php",
-        "line":13
+        "line":14
     },
     {
         "type":"array.illegal_offset_type",
         "message":"Illegal array offset type DateTime for key $variable.",
         "file":"ArrayIllegalOffsetType.php",
-        "line":26
+        "line":27
     },
     {
         "type":"array.illegal_offset_type",
         "message":"Illegal array offset type DateTime.",
         "file":"ArrayIllegalOffsetType.php",
-        "line":37
+        "line":38
     },
     {
         "type":"array.illegal_offset_type",
         "message":"Illegal array offset type DateTime for key $variable.",
         "file":"ArrayIllegalOffsetType.php",
-        "line":51
+        "line":52
     },
     {
         "type":"array.illegal_offset_type",
         "message":"Illegal array offset type stdClass.",
         "file":"ArrayIllegalOffsetType.php",
-        "line": 73
+        "line": 74
     },
     {
         "type":"array.illegal_offset_type",
         "message":"Illegal array offset type DateTime for key $variable.",
         "file":"ArrayIllegalOffsetType.php",
-        "line":86
+        "line":87
     },
     {
         "type":"array.illegal_offset_type",
         "message":"Illegal array offset type DateTime.",
         "file":"ArrayIllegalOffsetType.php",
-        "line":97
+        "line":98
     }
 ]

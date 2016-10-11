@@ -33,18 +33,18 @@ class GotoUsage
         "type": "goto_usage",
         "message": "Do not use labels",
         "file": "GotoUsage.php",
-        "line": 8
+        "line": 9
     },
     {
         "type": "goto_usage",
         "message": "Do not use goto statements",
         "file": "GotoUsage.php",
-        "line": 9
+        "line": 10
     },
     {
         "type": "goto_usage",
         "message": "Do not use labels",
         "file": "GotoUsage.php",
-        "line": 19
+        "line": 20
     }
 ]

@@ -21,6 +21,6 @@ class RegularExpressions
         "type":"regex.invalid",
         "message":"Regular expression [ is not valid",
         "file":"RegularExpressions.php",
-        "line":8
+        "line":9
     }
 ]

@@ -25,18 +25,18 @@ class PropertyWithVar
         "type":"missing_visibility",
         "message":"Class property was defined with the deprecated var keyword. Use a visibility modifier instead.",
         "file":"MissingVisibility.php",
-        "line":9
+        "line":10
     },
     {
         "type":"missing_visibility",
         "message":"Class property was defined with the deprecated var keyword. Use a visibility modifier instead.",
         "file":"MissingVisibility.php",
-        "line":10
+        "line":11
     },
     {
         "type":"missing_visibility",
         "message":"Class method was defined without a visibility modifier.",
         "file":"MissingVisibility.php",
-        "line":16
+        "line":17
     }
 ]

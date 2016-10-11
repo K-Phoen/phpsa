@@ -120,36 +120,36 @@ class DebugCode
         "type":"debug.code",
         "message":"Function var_dump() is a debug function, please don`t use it in production.",
         "file":"DebugCode.php",
-        "line":11
+        "line":12
     },
     {
         "type":"debug.code",
         "message":"Function var_dump() is a debug function, please don`t use it in production.",
         "file":"DebugCode.php",
-        "line":37
+        "line":38
     },
     {
         "type":"debug.code",
         "message":"Function var_export() is a debug function, please don`t use it in production.",
         "file":"DebugCode.php",
-        "line":47
+        "line":48
     },
     {
         "type":"debug.code",
         "message":"Function var_export() is a debug function, please don`t use it in production.",
         "file":"DebugCode.php",
-        "line":73
+        "line":74
     },
     {
         "type":"debug.code",
         "message":"Function debug_zval_dump() is a debug function, please don`t use it in production.",
         "file":"DebugCode.php",
-        "line":83
+        "line":84
     },
     {
         "type":"debug.code",
         "message":"Function debug_zval_dump() is a debug function, please don`t use it in production.",
         "file":"DebugCode.php",
-        "line":109
+        "line":110
     }
 ]

@@ -25,12 +25,6 @@ class StupidUnaryOperators
         "type":"stupid_unary_operators",
         "message":"Better to use type casting then unary plus.",
         "file":"StupidUnaryOperators.php",
-        "line":8
-    },
-    {
-        "type":"stupid_unary_operators",
-        "message":"Better to use type casting then unary plus.",
-        "file":"StupidUnaryOperators.php",
         "line":9
     },
     {
@@ -38,5 +32,11 @@ class StupidUnaryOperators
         "message":"Better to use type casting then unary plus.",
         "file":"StupidUnaryOperators.php",
         "line":10
+    },
+    {
+        "type":"stupid_unary_operators",
+        "message":"Better to use type casting then unary plus.",
+        "file":"StupidUnaryOperators.php",
+        "line":11
     }
 ]

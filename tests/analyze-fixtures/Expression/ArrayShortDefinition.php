@@ -30,12 +30,12 @@ class ArrayShortDefinition
         "type":"array.short-syntax",
         "message":"Please use [] (short syntax) for array definition.",
         "file":"ArrayShortDefinition.php",
-        "line":7
+        "line":8
     },
     {
         "type":"array.short-syntax",
         "message":"Please use [] (short syntax) for array definition.",
         "file":"ArrayShortDefinition.php",
-        "line":14
+        "line":15
     }
 ]

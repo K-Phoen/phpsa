@@ -62,18 +62,18 @@ class ArrayDuplicateKeys
         "type":"array.duplicate_keys",
         "message":"Duplicate array key \"foo\" in array definition (previously declared in line 13).",
         "file":"ArrayDuplicateKeys.php",
-        "line":14
+        "line":15
     },
     {
         "type":"array.duplicate_keys",
         "message":"Duplicate array key \"0\" in array definition (previously declared in line 25).",
         "file":"ArrayDuplicateKeys.php",
-        "line":26
+        "line":27
     },
     {
         "type":"array.duplicate_keys",
         "message":"Duplicate array key \"$zero (resolved value: \"0\")\" in array definition (previously declared in line 39).",
         "file":"ArrayDuplicateKeys.php",
-        "line":40
+        "line":41
     }
 ]

@@ -35,18 +35,18 @@ class DeprecatedFunctions
         "type":"deprecated.function",
         "message":"split() is deprecated since PHP 5.3. Use explode() instead.",
         "file":"DeprecatedFunctions.php",
-        "line":11
+        "line":12
     },
     {
         "type":"deprecated.function",
         "message":"The MySQL Extension is deprecated since PHP 5.5. Use PDO instead.",
         "file":"DeprecatedFunctions.php",
-        "line":19
+        "line":20
     },
     {
         "type":"deprecated.function",
         "message":"The Mcrypt Extension is deprecated since PHP 7.1. Use paragonie/halite instead.",
         "file":"DeprecatedFunctions.php",
-        "line":27
+        "line":28
     }
 ]

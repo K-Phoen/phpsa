@@ -134,36 +134,36 @@ class VariableVariableUsage
         "type": "variable.dynamic_assignment",
         "message": "Dynamic assignment is greatly discouraged.",
         "file": "VariableVariableUsage.php",
-        "line": 25
+        "line": 26
     },
     {
         "type": "variable.dynamic_assignment",
         "message": "Dynamic assignment is greatly discouraged.",
         "file": "VariableVariableUsage.php",
-        "line": 49
+        "line": 50
     },
     {
         "type": "variable.dynamic_assignment",
         "message": "Dynamic assignment is greatly discouraged.",
         "file": "VariableVariableUsage.php",
-        "line": 70
+        "line": 71
     },
     {
         "type": "variable.dynamic_assignment",
         "message": "Dynamic assignment is greatly discouraged.",
         "file": "VariableVariableUsage.php",
-        "line": 90
+        "line": 91
     },
     {
         "type": "variable.dynamic_assignment",
         "message": "Dynamic assignment is greatly discouraged.",
         "file": "VariableVariableUsage.php",
-        "line": 108
+        "line": 109
     },
     {
         "type": "variable.dynamic_assignment",
         "message": "Dynamic assignment is greatly discouraged.",
         "file": "VariableVariableUsage.php",
-        "line": 118
+        "line": 119
     }
 ]

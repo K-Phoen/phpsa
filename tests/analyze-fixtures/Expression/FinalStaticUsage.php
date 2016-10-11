@@ -20,6 +20,6 @@ final class FinalStaticUsage
         "type":"error.final-static-usage",
         "message":"Don't use static:: in final class",
         "file":"FinalStaticUsage.php",
-        "line":8
+        "line":9
     }
 ]

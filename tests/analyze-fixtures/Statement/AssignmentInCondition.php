@@ -82,48 +82,48 @@ class AssignmentCondition
         "type": "assignment_in_condition",
         "message": "An assignment statement has been made instead of conditional statement",
         "file": "AssignmentInCondition.php",
-        "line": 9
+        "line": 10
     },
     {
         "type": "assignment_in_condition",
         "message": "An assignment statement has been made instead of conditional statement",
         "file": "AssignmentInCondition.php",
-        "line": 11
+        "line": 12
     },
     {
         "type": "assignment_in_condition",
         "message": "An assignment statement has been made instead of conditional statement",
         "file": "AssignmentInCondition.php",
-        "line": 13
+        "line": 14
     },
     {
         "type": "assignment_in_condition",
         "message": "An assignment statement has been made instead of conditional statement",
         "file": "AssignmentInCondition.php",
-        "line": 21
+        "line": 22
     },
     {
         "type": "assignment_in_condition",
         "message": "An assignment statement has been made instead of conditional statement",
         "file": "AssignmentInCondition.php",
-        "line": 25
+        "line": 26
     },
     {
         "type": "assignment_in_condition",
         "message": "An assignment statement has been made instead of conditional statement",
         "file": "AssignmentInCondition.php",
-        "line": 29
+        "line": 30
     },
     {
         "type": "assignment_in_condition",
         "message": "An assignment statement has been made instead of conditional statement",
         "file": "AssignmentInCondition.php",
-        "line": 38
+        "line": 39
     },
     {
         "type": "assignment_in_condition",
         "message": "An assignment statement has been made instead of conditional statement",
         "file": "AssignmentInCondition.php",
-        "line": 40
+        "line": 41
     }
 ]

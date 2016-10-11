@@ -22,6 +22,6 @@ class InlineHtmlUsage
         "type": "inline_html_usage",
         "message": "Do not use inline HTML",
         "file": "InlineHtmlUsage.php",
-        "line": 9
+        "line": 10
     }
 ]
