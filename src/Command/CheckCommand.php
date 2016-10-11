@@ -13,6 +13,7 @@ use PHPSA\Configuration;
 use PHPSA\ConfigurationLoader;
 use PHPSA\Context;
 use PHPSA\Definition\FileParser;
+use PHPSA\Report\ReporterFactory;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
@@ -156,11 +157,11 @@ class CheckCommand extends Command
 
         $jsonReport = $input->getOption('report-json');
         if ($jsonReport) {
+            $reporter = ReporterFactory::create()->getReporter('json');
+
             file_put_contents(
                 $jsonReport,
-                json_encode(
-                    $this->getApplication()->getIssuesCollector()->getIssues()
-                )
+                $reporter->report($this->getApplication()->getIssuesCollector())
             );
         }
 
