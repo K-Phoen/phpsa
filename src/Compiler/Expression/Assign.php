@@ -40,7 +40,7 @@ class Assign extends AbstractExpressionCompiler
 
                 $symbol = $context->getSymbol($var->name);
                 if (!$symbol) {
-                    $symbol = new \PhpSA\Variable(
+                    $symbol = new \PHPSA\Variable(
                         $var->name,
                         null,
                         CompiledExpression::UNKNOWN,
@@ -103,7 +103,7 @@ class Assign extends AbstractExpressionCompiler
                 $value->getValue()
             );
         } else {
-            $symbol = new \PhpSA\Variable(
+            $symbol = new \PHPSA\Variable(
                 $variableName->getValue(),
                 $value->getValue(),
                 $value->getType(),

@@ -16,9 +16,9 @@ class Parameter extends Variable
      * @param null $defaultValue
      * @param int $type
      * @param bool|false $referenced
-     * @param NodeAbstract $declarationStmt
+     * @param NodeAbstract|null $declarationStmt
      */
-    public function __construct($name, $defaultValue = null, $type = CompiledExpression::UNKNOWN, $referenced = false, NodeAbstract $declarationStmt)
+    public function __construct($name, $defaultValue = null, $type = CompiledExpression::UNKNOWN, $referenced = false, NodeAbstract $declarationStmt = null)
     {
         parent::__construct($name, $defaultValue, $type, $declarationStmt);
 

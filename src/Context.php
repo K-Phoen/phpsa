@@ -172,11 +172,14 @@ class Context
      * @param string $message
      * @param \PhpParser\NodeAbstract $expr
      * @param int $status
+     * @param array $categories
      * @return bool
      */
-    public function notice($type, $message, \PhpParser\NodeAbstract $expr, $status = Check::CHECK_SAFE)
+    public function notice($type, $message, \PhpParser\NodeAbstract $expr, $status = Check::CHECK_SAFE, array $categories = [Issue::CATEGORY_BUG_RISK])
     {
-        return $this->addIssue($type, $message, $expr->getLine());
+        $issue = new Issue($type, $message, new IssueLocation($this->filepath, $expr->getLine()), $categories);
+
+        return $this->addIssue($issue);
     }
 
     /**
@@ -188,23 +191,26 @@ class Context
      */
     public function syntaxError(\PhpParser\Error $exception, $filepath)
     {
-        return $this->addIssue('syntax-error', $exception->getMessage(), $exception->getStartLine(), $filepath);
+        $issue = new Issue(
+            'syntax-error',
+            $exception->getMessage(),
+            new IssueLocation($filepath, $exception->getStartLine()),
+            [Issue::CATEGORY_BUG_RISK]
+        );
+
+        return $this->addIssue($issue);
     }
 
     /**
-     * @param $type
-     * @param $message
-     * @param $line
-     * @param string|null $filepath
+     * @param Issue $issue
      * @return bool
      */
-    protected function addIssue($type, $message, $line, $filepath = null)
+    protected function addIssue(Issue $issue)
     {
-        $filepath = $filepath ?: $this->filepath;
-        $issue = new Issue($type, $message, new IssueLocation($filepath, $line));
-
         if ($this->application->getConfiguration()->getValue('blame')) {
-            exec("git blame --show-email -L {$line},{$line} " . $filepath, $result);
+            $line = $issue->getLocation()->getLineStart();
+
+            exec("git blame --show-email -L {$line},{$line} " . $issue->getLocation()->getFilePath(), $result);
             if ($result && isset($result[0])) {
                 $issue->setBlame(trim($result[0]));
             }
